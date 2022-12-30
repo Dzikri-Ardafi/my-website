@@ -10,7 +10,11 @@
               <p class="nameText font-weight-bold mr-3">Dzikri Ardafi</p>
             </div>
 
-            <p class="roleText my-auto ml-3">Frontend Web Developer</p>
+            <p class="roleText my-auto ml-3">
+              <span v-for="text, index in newTextArr" :key="index">
+                {{ text }}
+              </span>
+            </p>
           </div>
           <v-btn @click="$emit('toExperience')" text class="buttonGoToExperience rounded-lg" color="#0098B9">
             <p>Lets see my Experience</p>
@@ -28,9 +32,35 @@
 <script>
 export default {
   name: "Jumbotron Component",
+  
   data() {
-    //
+    return {
+      text: 'Frontend Developer',
+      newTextArr: [],
+      index: -1,
+      interval: setInterval(()=> {
+      this.index ++
+    }, 100)
+    }
   },
+  watch: {
+    index(e){
+      const textToArr = Array.from(this.text)
+      this.newTextArr.push(textToArr[this.index])
+      console.log(this.newTextArr)
+      if(this.index === 17){
+       clearInterval(this.interval)
+      }
+    }
+  },
+  mounted(){
+    this.onType()
+  },
+  methods: {
+   onType(){
+    this.interval 
+   }
+  }
 };
 </script>
 
@@ -41,10 +71,6 @@ export default {
 }
 .profileWrapper{
   animation: fadeInRight;
-  animation-duration: 2s;
-}
-.mainWrapper{
-  animation: fadeInLeft;
   animation-duration: 2s;
 }
 .nameText {
