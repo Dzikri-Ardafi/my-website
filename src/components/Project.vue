@@ -12,7 +12,7 @@
       <p class="titleSection">My Project</p>
     </div>
     <div class="wrapperProject">
-      <div v-for="n in 9" :key="n" :class="nameClassProject ? 'contentProject' : '-'">
+      <div v-for="n in 6" :key="n" :class="nameClassProject ? 'contentProject' : '-'">
         <v-card
           elevation="0"
           height="250px"
