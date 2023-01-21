@@ -14,15 +14,15 @@
         <FormEmail id="contactMe" :nameClassForm="nameClassForm" />
         <Footer />
       </v-main>
-  
-      <div :class="nameClassButtomUp ? 'buttonUp' : '-'">
+
+      <div :class="nameClassButtomUp ? 'buttonUp' : 'closeButtonUp'">
         <v-btn @click="scrollToTop" color="light-blue accent-1" icon>
           <v-icon> mdi-arrow-up </v-icon>
         </v-btn>
       </div>
     </v-app>
   </template>
-  
+
   <script>
   import AboutMe from "../components/AboutMe.vue";
   import ButtonUp from "../components/ButtonUp.vue";
@@ -54,7 +54,7 @@
     mounted(){
       window.onscroll = (()=> {
         this.onScroll()
-      }) 
+      })
     },
     methods: {
       onScroll(){
@@ -64,10 +64,13 @@
           this.nameClassTimelineDate = true
           this.nameClassButtomUp = true
         }
-        if(scrollTopHeight >= 1500){
+        else if(scrollTopHeight <= 150){
+          this.nameClassButtomUp = false
+        }
+        else if(scrollTopHeight >= 1500){
           this.nameClassProject = true
         }
-        if(scrollTopHeight >= 3000){
+        else if(scrollTopHeight >= 3000){
           this.nameClassForm = true
         }
       },
@@ -100,7 +103,7 @@
     },
   };
   </script>
-  
+
   <style scoped>
   .mainApp {
     font-family: "Montserrat", sans-serif;
@@ -113,12 +116,14 @@
     animation-duration: 2s;
     display: flex;
     justify-items: end;
-    color: red;
     right: 0;
     bottom: 0;
     margin-right: 2em;
     margin-bottom: 2em;
     position: fixed;
   }
+  .closeButtonUp{
+    width: 0;
+    height: 0;
+  }
   </style>
-  
