@@ -66,10 +66,16 @@ export default {
 <style>
 .wrapperProject {
   display: grid;
-  
+
   grid-template-columns: repeat(3, auto);
   column-gap: 1em;
   row-gap: 5em;
+}
+@media only screen and (max-width: 960px){
+  .wrapperProject {
+  display: grid;
+  grid-template-columns: repeat(1, 100%);
+}
 }
 .contentProject{
   animation: pulse;

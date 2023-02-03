@@ -1,8 +1,8 @@
 <template>
-  <div class="jumbutron px-15 mt-16">
+  <v-container class="jumbutron mt-16">
     <v-row>
       <!-- section detail -->
-      <v-col cols="8" class="ml-16 mt-15 mainWrapper">
+      <v-col sm="12" md="8" class="ml-16 mt-15 mainWrapper">
         <div class="my-15">
           <p class="hyText font-weight-black">Hi, Iam</p>
           <div class="d-flex">
@@ -16,23 +16,31 @@
               </span>
             </p>
           </div>
-          <v-btn @click="$emit('toExperience')" text class="buttonGoToExperience rounded-lg" color="#0098B9">
+          <v-btn @click="$emit('toExperience')" text class="buttonGoToExperience rounded-lg mt-5" color="#0098B9">
             <p>Lets see my Experience</p>
           </v-btn>
         </div>
       </v-col>
       <!-- section photo -->
-      <v-col class="profileWrapper" cols="3">
-        <img src="../assets/images/profileImage.png" alt="profle Image" />
+      <v-col class="profileWrapper" sm="12" md="3">
+
+          <div class="wrapper">
+            <div>
+            </div>
+          <div>
+            <img src="../assets/images/profileImage.png" alt="profle Image" />
+          </div>
+          </div>
+
       </v-col>
     </v-row>
-  </div>
+  </v-container>
 </template>
 
 <script>
 export default {
   name: "Jumbotron Component",
-  
+
   data() {
     return {
       text: 'Frontend Developer',
@@ -58,7 +66,7 @@ export default {
   },
   methods: {
    onType(){
-    this.interval 
+    this.interval
    }
   }
 };
@@ -72,6 +80,12 @@ export default {
 .profileWrapper{
   animation: fadeInRight;
   animation-duration: 2s;
+
+
+}
+.wrapper{
+display: flex;
+justify-content: center;
 }
 .nameText {
   font-size: 45px;
