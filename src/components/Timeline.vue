@@ -157,7 +157,7 @@ export default {
         },
         {
           name: "Independent Study - Kampus Merdeka Batch 3",
-          date: "August 2022 - Des 2022",
+          date: "Jul 2022 - Des 2022",
           company: "Dicoding Academy",
           detail:
             "individual learning using the React JS programming language and final projects as a team to develop a new website",
