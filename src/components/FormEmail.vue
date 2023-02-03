@@ -11,16 +11,15 @@
       </div>
       <p class="titleSection">Contact Me</p>
     </div>
-    <div class="main px-16 mb-16">
-      <v-card style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25)" class="cardForm px-16 py-16" :class="nameClassForm ? 'cardFormWrapper' : '-'">
-        <form action="https://formsubmit.co/dzkri.ardfi@gmail.com" method="POST">
-          <div class="form-section-from" style="padding-right: 50em">
+    <v-container fluid class="main mb-16 px-16">
+      <v-card style="box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25)" class="cardForm px-5 py-16" :class="nameClassForm ? 'cardFormWrapper' : '-'">
+
+          <form action="https://formsubmit.co/dzkri.ardfi@gmail.com" method="POST">
+            <v-col md="6" sm="12">
             <!-- disabled captca -->
             <input type="hidden" name="_captcha" value="false">
-
             <!-- element is sending email is complete -->
             <input type="hidden" name="_next" :value="URL">
-
             <v-text-field
               v-model="emailForm"
               :value="emailForm"
@@ -34,8 +33,8 @@
               placeholder="Your Email"
               outlined
             />
-          </div>
-          <div style="padding-right: 45rem">
+            </v-col>
+          <v-col md="6" sm="12">
             <v-text-field
               required
               v-model="subjectMessage"
@@ -47,7 +46,8 @@
               placeholder="Subject"
               name="_subject"
             />
-          </div>
+          </v-col>
+         <v-col cols="12">
           <v-textarea
             v-model="bodyMessage"
             :value="bodyMessage"
@@ -59,6 +59,7 @@
             bg-color="#F2F4FF"
             placeholder="Your Message"
           ></v-textarea>
+         </v-col>
           <div align="end">
             <v-btn
               type="submit"
@@ -84,8 +85,9 @@
             </v-btn>
           </div>
         </form>
+
       </v-card>
-    </div>
+    </v-container>
   </div>
 </template>
 
@@ -110,7 +112,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .main .cardForm {
   background: rgba(145, 189, 184, 0.38);
   border-radius: 5px 25px;
@@ -119,4 +121,5 @@ export default {
   animation: fadeInUp;
   animation-duration: 2s;
 }
+
 </style>

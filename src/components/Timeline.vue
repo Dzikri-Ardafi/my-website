@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-16">
+  <div  class="mt-16">
     <div class="d-flex justify-center mb-3">
       <div class="d-flex dividerSection mt-5">
         <div>
@@ -13,7 +13,8 @@
     </div>
 
     <div class="wrapperTimeline">
-      <v-timeline side="end">
+
+        <v-timeline side="end">
         <v-timeline-item
           v-for="itemExperince in experince"
           :key="itemExperince.name"
@@ -32,15 +33,15 @@
               {{ itemExperince.date }}
             </span>
             <br />
-            <span v-if="itemExperince.isEstimated === true">
+            <span class="estimated" v-if="itemExperince.isEstimated === true">
               <p style="color: #9a9a9a; font-size: 15px; font-weight: 700">
                 (estimated)
               </p>
             </span>
           </div>
           </template>
-            
-        
+
+
           <v-card v-if="classTimelineItem" class="cardExperience mb-5" :class="classTimelineItem ? 'itemExperienced' : '-'">
             <v-card-title class="text-h5 titleExperince">
               {{ itemExperince.name }}
@@ -50,13 +51,18 @@
               {{ itemExperince.company }}
             </v-card-subtitle>
             <v-card-subtitle class="dateMiniWidth mt-1">
-              <p>{{ itemExperince.date }}</p>
+              <p>{{ itemExperince.date }} <span v-if="itemExperince.isEstimated ===true">
+                <p style="color: #9a9a9a; font-size: 15px; font-weight: 700">
+                (estimated)
+              </p>
+                </span></p>
             </v-card-subtitle>
             <v-card-text class="detailExperince">{{
               itemExperince.detail
             }}</v-card-text>
+
             <v-btn
-              class="ml-3 px-7 rounded-pill"
+              class="ml-3 px-7 my-1 rounded-pill"
               :color="skill.color"
               v-for="skill in itemExperince.skill"
               :key="skill"
@@ -68,6 +74,7 @@
                 {{ skill.name }}
               </p>
             </v-btn>
+
           </v-card>
         </v-timeline-item>
       </v-timeline>
@@ -212,7 +219,7 @@ export default {
   animation: fadeInUp;
   animation-duration: 3s;
 }
-.dateMiniWidth {
+.dateMiniWidth, .estimated {
   display: none;
 }
 .dotTimeline {
@@ -246,10 +253,9 @@ export default {
   font-size: 20px;
   color: #000000;
 }
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 960px) {
   .cardExperience {
-    width: 500px;
-    height: max-content;
+    width: 55%;
   }
   .dateMiniWidth {
     color: rgba(11, 0, 90, 0.797);
@@ -261,8 +267,6 @@ export default {
   .dateExperience {
     display: none;
   }
-  .wrapperTimeline {
-    margin-left: -1em;
-  }
+
 }
 </style>

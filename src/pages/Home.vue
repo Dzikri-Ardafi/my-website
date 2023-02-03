@@ -14,15 +14,15 @@
         <FormEmail id="contactMe" :nameClassForm="nameClassForm" />
         <Footer />
       </v-main>
-  
-      <div :class="nameClassButtomUp ? 'buttonUp' : '-'">
-        <v-btn @click="scrollToTop" color="light-blue accent-1" icon>
-          <v-icon> mdi-arrow-up </v-icon>
+
+      <div :class="nameClassButtomUp ? 'buttonUp' : 'buttonUpFalse'">
+        <v-btn @click="scrollToTop" :class="nameClassButtomUp ? 'button' : 'buttonFalse'" icon>
+          <v-icon :class="nameClassButtomUp ? 'icon' : 'iconFalse'"> mdi-arrow-up </v-icon>
         </v-btn>
       </div>
     </v-app>
   </template>
-  
+
   <script>
   import AboutMe from "../components/AboutMe.vue";
   import ButtonUp from "../components/ButtonUp.vue";
@@ -54,7 +54,7 @@
     mounted(){
       window.onscroll = (()=> {
         this.onScroll()
-      }) 
+      })
     },
     methods: {
       onScroll(){
@@ -63,6 +63,8 @@
           this.nameClassTimelineItem = true
           this.nameClassTimelineDate = true
           this.nameClassButtomUp = true
+        } else {
+          this.nameClassButtomUp = false
         }
         if(scrollTopHeight >= 1500){
           this.nameClassProject = true
@@ -100,7 +102,7 @@
     },
   };
   </script>
-  
+
   <style scoped>
   .mainApp {
     font-family: "Montserrat", sans-serif;
@@ -108,17 +110,45 @@
     padding: 0px;
     background: linear-gradient(180deg, #9aa9fb 0%, rgba(61, 203, 194, 0) 100%);
   }
+  .button{
+    background-color: rgb(101, 107, 229);
+  }
   .buttonUp {
     animation: fadeInUp;
     animation-duration: 2s;
     display: flex;
     justify-items: end;
-    color: red;
     right: 0;
     bottom: 0;
     margin-right: 2em;
     margin-bottom: 2em;
     position: fixed;
+
   }
+  .buttonUpFalse, .iconFalse, .buttonFalse {
+    color:transparent;
+    background-color: transparent;
+    animation-duration:2s ;
+    animation-name: example;
+    width: 0px;
+    height: 0px;
+    display: flex;
+    justify-items: end;
+    position: fixed;
+    right: 0;
+    bottom: 1em;
+    width: 0%;
+    transition: all 1s;
+    transform: translateY(-100%);
+}
+.icon{
+  color: white;
+}
   </style>
-  
+  <!-- &:hover {
+     top: 0px;
+     transform: translateY(0%);
+  } -->
+  <!-- @keyframes example {
+  from {width: 100%; bottom: 0;}
+  to {width: 0%;} -->
